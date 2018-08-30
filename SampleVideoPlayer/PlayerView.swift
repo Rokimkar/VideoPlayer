@@ -29,7 +29,6 @@ class PlayerView: UIView {
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
         commonInit()
-        //fatalError("init(coder:) has not been implemented")
     }
     
     func commonInit(){
@@ -38,7 +37,6 @@ class PlayerView: UIView {
     }
     
     func setupPlayerLayer(){
-        //self.playerLayer = AVPlayerLayer.init()
         self.playerLayer.frame = CGRect.init(x: 0, y: 0, width: self.frame.width, height: self.frame.height)
         self.playerLayer.player = PlayerManager.sharedInstance.player
         self.layer.insertSublayer(self.playerLayer, at: 0)
@@ -46,6 +44,6 @@ class PlayerView: UIView {
     
     func destroyLayer(){
         self.playerLayer.removeFromSuperlayer()
-        self.playerLayer = AVPlayerLayer.init()
+        self.playerLayer = AVPlayerLayer.init() // Previous instance needs to be deallocated as its stop player while entering in background.
     }
 }
