@@ -18,6 +18,7 @@ class PlayerViewController: UIViewController {
         let notificationCenter = NotificationCenter.default
         notificationCenter.addObserver(self, selector: #selector(appEnteredBackground), name: Notification.Name.UIApplicationDidEnterBackground, object: nil)
         notificationCenter.addObserver(self, selector: #selector(appEnteredForeground), name: Notification.Name.UIApplicationWillEnterForeground, object: nil)
+        notificationCenter.addObserver(self, selector: #selector(playerItemChanged), name: Notification.Name.playerItemChanged, object: nil)
         // Do any additional setup after loading the view.
     }
     
@@ -34,6 +35,11 @@ class PlayerViewController: UIViewController {
     }
     
     @objc func appEnteredForeground(){
+        self.playerView.setupPlayerLayer()
+    }
+    
+    @objc func playerItemChanged(){
+        self.playerView.destroyLayer()
         self.playerView.setupPlayerLayer()
     }
     

@@ -26,7 +26,7 @@ class ViewController: UIViewController {
     }
     
     @IBAction func playButtonPressed(_ sender: Any) {
-        PlayerManager.sharedInstance.setUpPlayerForUrl(url: "http://qthttp.apple.com.edgesuite.net/1010qwoeiuryfg/sl.m3u8")
+        PlayerManager.sharedInstance.setUpPlayerForUrl(url: PlayerManager.sharedInstance.playerQueue[0])
     }
     
     func setUpPlayerLayer(){
